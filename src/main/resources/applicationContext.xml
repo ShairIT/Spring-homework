@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--    <context:component-scan base-package="org.example"/>-->
+    <context:property-placeholder location="application.properties"/>
+
+   <bean id = "horse"
+         class = "org.example.model.Horse">
+    <property name = "colour" value="${horse.colour}"/>
+
+   </bean>
+
+    <bean id = "myDog"
+          class = "org.example.model.Dog">
+        <property name="bread" value = "${dog.bread}"/>
+        <property name="weight" value = "${dog.weight}"/>
+    </bean>
+
+    <bean id = "myPerson"
+          class="org.example.model.Person">
+        <property name="name" value="${person.name}"/>
+        <property name="age" value="${person.age}"/>
+        <constructor-arg ref="myDog"/>
+    </bean>
+
+</beans>
